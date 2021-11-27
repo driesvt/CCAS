@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CCAS.Application.DTOs.Student;
 using CCAS.Application.DTOs.Student.Validators;
-using CCAS.Application.Interfaces;
+using CCAS.Application.Interfaces.Persistence;
 using CCAS.Application.Responses;
 using CCAS.Domain.Entities;
 using MediatR;

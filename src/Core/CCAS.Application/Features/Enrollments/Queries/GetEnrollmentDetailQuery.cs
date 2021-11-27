@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CCAS.Application.DTOs.Enrollment;
-using CCAS.Application.Interfaces;
+using CCAS.Application.Interfaces.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;

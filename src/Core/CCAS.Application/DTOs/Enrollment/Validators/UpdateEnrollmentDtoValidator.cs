@@ -1,4 +1,4 @@
-﻿using CCAS.Application.Interfaces;
+﻿using CCAS.Application.Interfaces.Persistence;
 using FluentValidation;
 using System;
 using System.Collections.Generic;

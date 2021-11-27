@@ -2,7 +2,7 @@
 using CCAS.Application.DTOs.Student;
 using CCAS.Application.DTOs.Student.Validators;
 using CCAS.Application.Exceptions;
-using CCAS.Application.Interfaces;
+using CCAS.Application.Interfaces.Persistence;
 using CCAS.Domain.Entities;
 using MediatR;
 using System;

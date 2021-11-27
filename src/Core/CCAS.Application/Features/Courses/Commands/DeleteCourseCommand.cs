@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CCAS.Application.Exceptions;
-using CCAS.Application.Interfaces;
+using CCAS.Application.Interfaces.Persistence;
 using CCAS.Domain.Entities;
 using MediatR;
 using System;

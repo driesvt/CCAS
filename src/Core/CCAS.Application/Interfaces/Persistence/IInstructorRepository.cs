@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CCAS.Application.Interfaces
+namespace CCAS.Application.Interfaces.Persistence
 {
-    public interface IStudentRepository : IGenericRepository<Student>
+    public interface IInstructorRepository : IGenericRepository<Instructor>
     {
     }
 }

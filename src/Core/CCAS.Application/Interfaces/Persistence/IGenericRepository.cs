@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CCAS.Application.Interfaces
+namespace CCAS.Application.Interfaces.Persistence
 {
     public interface IGenericRepository<T> where T : class
     {
