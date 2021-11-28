@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCAS.Domain", "src\Core\CCA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCAS.Application", "src\Core\CCAS.Application\CCAS.Application.csproj", "{21DCBAE1-D9A2-4950-8C68-980A0737C1AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCAS.Infrastructure", "src\Infrastructure\CCAS.Infrastructure\CCAS.Infrastructure.csproj", "{91386225-DD5A-4322-AFC4-4DFDF37B904F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCAS.Infrastructure", "src\Infrastructure\CCAS.Infrastructure\CCAS.Infrastructure.csproj", "{91386225-DD5A-4322-AFC4-4DFDF37B904F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCAS.Persistence", "src\Infrastructure\CCAS.Persistence\CCAS.Persistence.csproj", "{23B73992-CB0E-4CA0-89F6-8CB54C77DCBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCAS.Persistence", "src\Infrastructure\CCAS.Persistence\CCAS.Persistence.csproj", "{23B73992-CB0E-4CA0-89F6-8CB54C77DCBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCAS.Api", "src\CCAS.Api\CCAS.Api.csproj", "{423EE70B-1DEE-4BA7-AC57-83D0FDBB2558}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{23B73992-CB0E-4CA0-89F6-8CB54C77DCBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23B73992-CB0E-4CA0-89F6-8CB54C77DCBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23B73992-CB0E-4CA0-89F6-8CB54C77DCBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{423EE70B-1DEE-4BA7-AC57-83D0FDBB2558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{423EE70B-1DEE-4BA7-AC57-83D0FDBB2558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{423EE70B-1DEE-4BA7-AC57-83D0FDBB2558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{423EE70B-1DEE-4BA7-AC57-83D0FDBB2558}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{21DCBAE1-D9A2-4950-8C68-980A0737C1AC} = {EC022B6E-B338-455A-9738-766463990003}
 		{91386225-DD5A-4322-AFC4-4DFDF37B904F} = {56B272F4-D686-4157-A11F-6806EA4A9BB2}
 		{23B73992-CB0E-4CA0-89F6-8CB54C77DCBC} = {56B272F4-D686-4157-A11F-6806EA4A9BB2}
+		{423EE70B-1DEE-4BA7-AC57-83D0FDBB2558} = {EC3964B7-B236-4F4B-AC4E-575893C05040}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EB6A6C9D-E890-48ED-BCB4-B8323BBE69D6}
