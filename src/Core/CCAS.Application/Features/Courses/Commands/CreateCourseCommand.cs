@@ -41,6 +41,7 @@ namespace CCAS.Application.Features.Courses.Commands
                 response.Success = false;
                 response.Message = "Creation failed";
                 response.Errors = validationResult.Errors.Select(q => q.ErrorMessage).ToList();
+                throw new ValidationException(validationResult);
             }
 
             var course = _mapper.Map<Course>(request.CreateCourseDto);
