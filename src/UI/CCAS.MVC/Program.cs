@@ -1,29 +1,20 @@
 using CCAS.MVC.Interfaces;
 using CCAS.MVC.Services;
 using CCAS.MVC.Services.Base;
-using Microsoft.AspNetCore.Authentication.Negotiate;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:44334"));
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:7224"));
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddSingleton<ILocalStorageService, LocalStorageService>();
 
-builder.Services.AddControllersWithViews();
-
-builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
-   .AddNegotiate();
-
-builder.Services.AddAuthorization(options =>
-{
-    // By default, all incoming requests will be authorized according to the default policy.
-    options.FallbackPolicy = options.DefaultPolicy;
-});
-builder.Services.AddRazorPages();
+builder.Services.AddScoped<ICourseService, CourseService>();
 
 var app = builder.Build();
 
@@ -40,7 +31,6 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

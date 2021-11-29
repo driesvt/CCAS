@@ -10,15 +10,15 @@ namespace CCAS.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EnrollmentController : ControllerBase
+    public class EnrollmentsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public EnrollmentController(IMediator mediator)
+        public EnrollmentsController(IMediator mediator)
         {
             _mediator = mediator;
         }
-        // GET: api/<EnrollmentController>
+        // GET: api/<EnrollmentsController>
         [HttpGet]
         public async Task<ActionResult<List<EnrollmentDto>>> Get()
         {
@@ -26,15 +26,15 @@ namespace CCAS.Api.Controllers
             return Ok(enrollments);
         }
 
-        // GET api/<EnrollmentController>/5
+        // GET api/<EnrollmentsController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult<EnrollmentDto>> Get(int id)
         {
-            var enrollment = await _mediator.Send(new GetEnrollmentDetailQuery {Id = id });
+            var enrollment = await _mediator.Send(new GetEnrollmentDetailQuery { Id = id });
             return Ok(enrollment);
         }
 
-        // POST api/<EnrollmentController>
+        // POST api/<EnrollmentsController>
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] CreateEnrollmentDto enrollment)
         {
@@ -43,7 +43,7 @@ namespace CCAS.Api.Controllers
             return Ok(response);
         }
 
-        // PUT api/<EnrollmentController>
+        // PUT api/<EnrollmentsController>/5
         [HttpPut]
         public async Task<ActionResult> Put([FromBody] EnrollmentDto enrollment)
         {
@@ -52,7 +52,7 @@ namespace CCAS.Api.Controllers
             return NoContent();
         }
 
-        // DELETE api/<EnrollmentController>/5
+        // DELETE api/<EnrollmentsController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {

@@ -41,16 +41,16 @@ namespace CCAS.Application.Features.Courses.Commands
                 response.Success = false;
                 response.Message = "Creation failed";
                 response.Errors = validationResult.Errors.Select(q => q.ErrorMessage).ToList();
-                throw new ValidationException(validationResult);
+            } 
+            else
+            {
+                var course = _mapper.Map<Course>(request.CreateCourseDto);
+                course = await _courseRepository.Add(course);
+                response.Success = true;
+                response.Message = "Creation Successful";
+                response.Id = course.Id;
             }
 
-            var course = _mapper.Map<Course>(request.CreateCourseDto);
-
-            course = await _courseRepository.Add(course);
-
-            response.Success = true;
-            response.Message = "Creation Successful";
-            response.Id = course.Id;
             return response;
         }
     }

@@ -59,15 +59,12 @@ namespace CCAS.Application.UnitTests.Courses.Commands
         {
             _courseDto.Credits = -2;
 
-            ValidationException ex = await Should.ThrowAsync<ValidationException>
-                ( async () => await _handler.Handle(new CreateCourseCommand() { CreateCourseDto = _courseDto }, CancellationToken.None)
-                );
+            var result = await _handler.Handle(new CreateCourseCommand() { CreateCourseDto = _courseDto }, CancellationToken.None);
 
             var courses = await _mockRepo.Object.GetAll();
 
             courses.Count.ShouldBe(3);
-
-            ex.ShouldNotBeNull();
+            result.ShouldBeOfType<BaseCommandResponse>();
         }
     }
 }

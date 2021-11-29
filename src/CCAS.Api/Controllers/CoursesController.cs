@@ -1,6 +1,7 @@
 ﻿using CCAS.Application.DTOs.Course;
 using CCAS.Application.Features.Courses.Commands;
 using CCAS.Application.Features.Courses.Queries;
+using CCAS.Application.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,15 +11,15 @@ namespace CCAS.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CourseController : ControllerBase
+    public class CoursesController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public CourseController(IMediator mediator)
+        public CoursesController(IMediator mediator)
         {
             _mediator = mediator;
         }
-        // GET: api/<CourseController>
+        // GET: api/<CoursesController>
         [HttpGet]
         public async Task<ActionResult<List<CourseDto>>> Get()
         {
@@ -26,24 +27,26 @@ namespace CCAS.Api.Controllers
             return Ok(courses);
         }
 
-        // GET api/<CourseController>/5
+        // GET api/<CoursesController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult<CourseDto>> Get(int id)
         {
-            var course = await _mediator.Send(new GetCourseDetailQuery {Id = id });
+            var course = await _mediator.Send(new GetCourseDetailQuery { Id = id });
             return Ok(course);
         }
 
-        // POST api/<CourseController>
+        // POST api/<CoursesController>
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] CreateCourseDto course)
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] CreateCourseDto course)
         {
             var command = new CreateCourseCommand { CreateCourseDto = course };
             var response = await _mediator.Send(command);
             return Ok(response);
         }
 
-        // PUT api/<CourseController>
+        // PUT api/<CoursesController>
         [HttpPut]
         public async Task<ActionResult> Put([FromBody] CourseDto course)
         {
@@ -52,7 +55,7 @@ namespace CCAS.Api.Controllers
             return NoContent();
         }
 
-        // DELETE api/<CourseController>/5
+        // DELETE api/<CoursesController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
