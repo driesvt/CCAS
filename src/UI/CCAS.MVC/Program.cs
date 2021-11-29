@@ -1,3 +1,5 @@
+using CCAS.MVC.Interfaces;
+using CCAS.MVC.Services;
 using CCAS.MVC.Services.Base;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using System.Reflection;
@@ -8,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:44334"));
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+builder.Services.AddSingleton<ILocalStorageService, LocalStorageService>();
 
 builder.Services.AddControllersWithViews();
 
