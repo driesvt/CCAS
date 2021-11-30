@@ -51,8 +51,8 @@ namespace CCAS.Api.Controllers
         public async Task<ActionResult> Put([FromBody] CourseDto course)
         {
             var command = new UpdateCourseCommand { CourseDto = course };
-            await _mediator.Send(command);
-            return NoContent();
+            var response =  await _mediator.Send(command);
+            return Ok(response);
         }
 
         // DELETE api/<CoursesController>/5
@@ -60,8 +60,8 @@ namespace CCAS.Api.Controllers
         public async Task<ActionResult> Delete(int id)
         {
             var command = new DeleteCourseCommand { Id = id };
-            await _mediator.Send(command);
-            return NoContent();
+            var response = await _mediator.Send(command);
+            return Ok(response);
         }
     }
 }

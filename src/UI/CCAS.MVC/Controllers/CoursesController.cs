@@ -1,4 +1,5 @@
 ﻿using CCAS.MVC.Interfaces;
+using CCAS.MVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,9 +21,11 @@ namespace CCAS.MVC.Controllers
         }
 
         // GET: CoursesController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var model = await _courseService.GetCourseDetails(id);
+
+            return View(model);
         }
 
         // GET: CoursesController/Create
@@ -34,58 +37,77 @@ namespace CCAS.MVC.Controllers
         // POST: CoursesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(CreateCourseVM course)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _courseService.CreateCourse(course);
+                if (response.Success)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                ModelState.AddModelError("", response.ValidationErrors);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", ex.Message);
             }
+
+            return View(course);
         }
 
         // GET: CoursesController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var model = await _courseService.GetCourseDetails(id);
+
+            return View(model);
         }
 
         // POST: CoursesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, CourseVM course)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _courseService.UpdateCourse(id, course);
+                if (response.Success)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+
+                ModelState.AddModelError("", response.ValidationErrors);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", ex.Message);
             }
+
+            return View(course);
         }
 
-        // GET: CoursesController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: CoursesController/Delete/5
+        // GET & POST: CoursesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _courseService.DeleteCourse(id);
+                if (response.Success)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+
+                ModelState.AddModelError("", response.ValidationErrors);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", ex.Message);
             }
+
+            return BadRequest();
         }
     }
 }

@@ -48,7 +48,8 @@ namespace CCAS.MVC.Services
         {
             try
             {
-                await _client.CoursesGETAsync(id);
+                AddBearerToken();
+                await _client.CoursesDELETEAsync(id);
                 return new Response<int>() { Success = true };
             }
             catch (ApiException ex)
